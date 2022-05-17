@@ -12,12 +12,6 @@ This library requires Spark 2.0+ .
 
 This library depends on [scalaj_http](https://github.com/scalaj/scalaj-http) package
 
-## Accessing the binary/jar file for this library already available in the release
-
-You can try out the binary/jar file for this library by downloading it from the the Release section of the parent repositoty Data-Science-Extensions.
-
-Click to the name of the repository Data-Science_Extensions. Go to the the Release link under the name of the repositoty. ONce you click there you would fine the link for the file spark-datasource-rest_2.11-2.1.0-SNAPSHOT.jar.zip. Download this file. Uncompress the same. Now you have spark-datasource-rest_2.11-2.1.0-SNAPSHOT.jar to use in your Spark Cluster.
-
 ## Features
 This package allows multiple calls, in parallel, to a target REST based micro service for a set of different input parameters. These parameters can be passed as a Temporary Spark Table where the column names of the table should be same as the keys of the target API. Each row in the table, and corresponding combination of parameter values, will be used to make one API call. The result from the multiple calls to the API is returned as a [Spark DataFrame](https://spark.apache.org/docs/1.6.0/sql-programming-guide.html) of Rows with an output structure matching that of the target API's response.
 
