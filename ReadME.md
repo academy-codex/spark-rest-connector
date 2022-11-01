@@ -1,19 +1,17 @@
-# Rest Data Source for Apache Spark
+# Rest API as a Data Source Connector in Apache Spark
 
-- This is a library for calling REST based services/APIs for multiple sets of input parameters in parallel and collating the results, returned by the REST service, in a Dataframe.
-
-- This package supports calling the target service API in a distributed way for different input parameter sets. The results are returned in a DataFrame in a Structure specific to the API without the user specifying this schema.
+- The module shared here can be used as a library to leverage the power of Apache Spark processing for data streamed over a REST API. The user can call one or more REST API in a distributed manner for different set of API parameters (for example, query parameters). The result of the API response is returned to the user as a Spark DataFrame.
 
 ## Requirements
 
-This library requires Spark 2.0+ .
+This library requires Spark 2.2+.
 
-## Dependency
+## HTTP Client Dependency
 
-This library depends on [scalaj_http](https://github.com/scalaj/scalaj-http) package
+This library leverages[scalaj_http](https://github.com/scalaj/scalaj-http) package.
 
 ## Features
-This package allows multiple calls, in parallel, to a target REST based micro service for a set of different input parameters. These parameters can be passed as a Temporary Spark Table where the column names of the table should be same as the keys of the target API. Each row in the table, and corresponding combination of parameter values, will be used to make one API call. The result from the multiple calls to the API is returned as a [Spark DataFrame](https://spark.apache.org/docs/1.6.0/sql-programming-guide.html) of Rows with an output structure matching that of the target API's response.
+This library allows multiple calls, in parallel, to a target REST based micro service for a set of different input parameters. These parameters can be passed as a Temporary Spark Table where the column names of the table should be same as the keys of the target API. Each row in the table, and corresponding combination of parameter values, will be used to make one API call. The result from the multiple calls to the API is returned as a Spark DataFrameof with the schema structure matching that of the target API's response.
 
 All datatypes are converted to string while generating the payload. Complex datatypes (objects) are also supported as payload; just ensure to **stringify the object to json string** (use [to_json()](https://spark.apache.org/docs/2.4.0/api/sql/#to_json) function in Spark SQL).
 
